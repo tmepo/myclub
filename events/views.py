@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-import calendar
-from calendar import HTMLCalendar
+from django.contrib.auth import authenticate,login,logout
+from django.contrib import messages
 # Create your views here.
 def home(requset):
     name='nothing'
@@ -17,5 +17,8 @@ def search_anything(request):
         return render(request,'events/searched.html',{'searched':searched})
     else:
         return render(request,'events/searched.html',{})
+    
+def login_user(request):
+    return render(request,'authenticate/login.html')
         
 
