@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterUserForm
 # Create your views here.
 def home(requset):
     name='nothing'
@@ -42,7 +43,7 @@ def logout_user(request):
 
 def register_user(request):
     if request.method=="POST":
-        form=UserCreationForm(request.POST)
+        form=RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             username=form.cleaned_data['username']
@@ -52,7 +53,7 @@ def register_user(request):
             messages.success(request,('Registartion successfull.!!'))
             return redirect('home')
     else:
-        form=UserCreationForm()
+        form=RegisterUserForm()
 
 
     return render(request,'authenticate/register_user.html',{'form':form,})
