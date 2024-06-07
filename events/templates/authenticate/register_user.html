@@ -1,0 +1,20 @@
+{% extends "events/base.html"%}
+{% block title %}Registration{% endblock %}
+{% block content %}
+   
+        <h1>Welcome to Register Page.</h1><br>
+        {% if form.errors %}
+        <div class="alert alert-warning" role="alert" margin-left:200px>
+            <p>There was an error registering with the form!!. Try again.</p>
+          </div>
+        {% endif %}
+        <h3>Register Here..</h3><br>
+        <div class="container">
+            <form action="{% url 'register_user'%}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                
+                <br><br><input type="submit" value="Submit" class="btn btn-secondary">
+            </form>
+        </div>
+    {% endblock %}
