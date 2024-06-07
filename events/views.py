@@ -34,3 +34,8 @@ def login_user(request):
         return render(request,'authenticate/login.html')
         
 
+def logout_user(request):
+    logout(request)
+    messages.success(request,('Ypu are logged out!! Please log in.'))
+    return redirect('login')
+
