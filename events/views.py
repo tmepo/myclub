@@ -5,12 +5,19 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterUserForm
 # Create your views here.
-def home(requset):
-    name='nothing'
+def home(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            # process the form data
+            pass
+    else:
+        form = RegisterUserForm()
+
+    return render(request, 'events/home.html', {'form': form})
    
       
     return render(requset,'events/home.html',{
-        'name':name,
     }
     )
 def search_anything(request):
@@ -57,3 +64,4 @@ def register_user(request):
 
 
     return render(request,'authenticate/register_user.html',{'form':form,})
+

@@ -8,6 +8,6 @@ class RegisterUserForm(UserCreationForm):
     last_name=forms.CharField(max_length=20)
     address=forms.CharField(max_length=30)
 
-    class Meat:
+    class Meta:
         model=User
         fields=('username','first_name','last_name','email','password1','password2')

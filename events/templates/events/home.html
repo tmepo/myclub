@@ -1,9 +1,18 @@
 {% extends "events/base.html"%}
+{% load crispy_forms_tags %}
 {% block title %}HomePage{% endblock %}
 {% block content %}
+
 <div class="container">
     
     <h3>hey welcome to the home page.</h3>
     
 </div>
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit"> submit</button>
+
+</form>
 {% endblock %}
+
